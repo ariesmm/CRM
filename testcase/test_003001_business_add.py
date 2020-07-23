@@ -8,9 +8,7 @@ from page.business_page import BusinessPage
 class BusinessAddTestCase(BaseTestCase):
 
     def test_business_add(self):
-        '''
-        新增商机
-        '''
+        '''新增商机'''
         lp = LoginPage(self.driver)  # 实例化登录page的LoginPage类
         lst_user = read_excel(r"D:\workspace\webAutoCRM\data\user.xlsx","user")#读取数据
         result = lp.login(lst_user[0][0], lst_user[0][1])#调用登录login方法
