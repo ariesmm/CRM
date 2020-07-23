@@ -21,18 +21,19 @@ class ClewPage(BasePage):
         self.driver.find_element(*self.loc_ele_clew_add).click()
 
     def ele_clew_username(self,clew_usernam):
-        self.driver.find_element(self.loc_ele_clew_username).send_keys(clew_usernam)
+        self.driver.find_element(*self.loc_ele_clew_username).send_keys(clew_usernam)
 
     def ele_clew_submit(self):
         self.driver.find_element(*self.loc_ele_clew_submit).click()
 
     def clew_add(self,clew_usernam):
-
         self.ele_clew()
         self.ele_clew_add()
+        time.sleep(2)
         self.ele_clew_username(clew_usernam)
         self.ele_clew_submit()
-        self.quit()
+        time.sleep(2)
+
 
 
 
