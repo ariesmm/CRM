@@ -15,7 +15,7 @@ class BusinessAddTestCase(BaseTestCase):
         self.assertIn(lst_user[0][0], result)
 
         bg = BusinessPage(self.driver)
-        result = bg.business_add('测试商机6','100000')
+        result = bg.business_add('新增商机lisa','100000')
         self.assertIn('添加商机成功',result)
 if __name__ == '__main__':
     unittest.main()
