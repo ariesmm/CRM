@@ -33,8 +33,7 @@ class LoginPage(BasePage):
         self.ele_password(pwd)
         self.ele_autologin()
         self.ele_submit()
-        time.sleep(3)
+        time.sleep(2)
         results = self.ele_result()
-        # self.quit()
         return results
 

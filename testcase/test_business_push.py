@@ -5,11 +5,12 @@ from page.basetest_page import BaseTestCase
 from page.login_page import LoginPage
 from page.business_page import BusinessPage
 
-class BusinessAddTestCase(BaseTestCase):
-    '''
-    新增商机
-    '''
-    def test_business_add(self):
+class BusinessPushTestCase(BaseTestCase):
+
+    def test_business_push(self):
+        '''
+        推进商机
+        '''
         lp = LoginPage(self.driver)  # 实例化登录page的LoginPage类
         lst_user = read_excel(r"D:\workspace\webAutoCRM\data\user.xlsx","user")#读取数据
         result = lp.login(lst_user[0][0], lst_user[0][1])#调用登录login方法

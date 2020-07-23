@@ -122,7 +122,7 @@ class BusinessPage(BasePage):
         return results
 
     def business_all(self,businessname,estimate_price):
-        # '''新增商机-修改商机-推进商机-删除商机'''
+        '''新增商机-修改商机-推进商机-删除商机'''
         lst = []
         res1 = self.business_add(businessname,estimate_price)
         res2 =self.business_update()
