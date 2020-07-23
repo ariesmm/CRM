@@ -7,24 +7,26 @@ from page.base_page import BasePage
 
 
 class ContractPage(BasePage):
-    def __init__(self, driver):
 
-        self.loc_ele_contract = (By.XPATH, '//ul[@class="nav"]/li[7]/a')
-        self.loc_ele_btn = (By.CLASS_NAME, "btn-primary")
-        self.loc_ele_number = (By.ID, 'number')
-        self.loc_ele_rnumber = (By.ID, 'number')
-        self.loc_ele_bus1 = (By.ID, 'business_name')
-        self.loc_ele_bus2 = (By.NAME, "business")
-        self.loc_ele_bus3 = (By.XPATH, '/html/body/div[7]/div[3]/div/button[1]/span')
-        self.loc_ele_start = (By.ID, "start_date")
-        self.loc_ele_due = (By.ID, "due_time")
-        self.loc_ele_price = (By.ID, "price")
-        self.loc_ele_end = (By.ID, "end_date")
-        self.loc_ele_back = (By.XPATH, '//table[@class="table"]/tfoot/tr/td[2]/input[2]')
-        self.loc_ele_check = (By.XPATH, '//form[@id="form1"]/table/tbody/tr[1]/td[10]/a[1]')
-        self.loc_ele_outcheck = (By.XPATH, '//div[@id="tab1"]/div[1]/div/a[3]')
-        self.loc_ele_comp = (By.XPATH, '//form[@id="form1"]/table/tbody/tr[1]/td[10]/a[2]')
-        self.loc_ele_outcomp = (By.XPATH, '//div[@id="tab1"]/form/table/thead/tr/td[2]/input[2]')
+    loc_ele_contract = (By.XPATH, '//ul[@class="nav"]/li[7]/a')
+    loc_ele_btn = (By.CLASS_NAME, "btn-primary")
+    loc_ele_number = (By.ID, 'number')
+    loc_ele_rnumber = (By.ID, 'number')
+
+    loc_ele_bus1 = (By.ID, 'business_name')
+    loc_ele_bus2 = (By.NAME, "business")
+    loc_ele_bus3 = (By.XPATH, '/html/body/div[7]/div[3]/div/button[1]/span')
+    loc_ele_start = (By.ID, "start_date")
+    loc_ele_due = (By.ID, "due_time")
+    loc_ele_price = (By.ID, "price")
+    loc_ele_end = (By.ID, "end_date")
+
+    loc_ele_back = (By.XPATH, '//table[@class="table"]/tfoot/tr/td[2]/input[1]')
+    loc_ele_check = (By.XPATH, '//form[@id="form1"]/table/tbody/tr[1]/td[10]/a[1]')
+    loc_ele_outcheck = (By.XPATH, '//div[@id="tab1"]/div[1]/div/a[3]')
+    loc_ele_comp = (By.XPATH, '//form[@id="form1"]/table/tbody/tr[1]/td[10]/a[2]')
+    loc_ele_outcomp = (By.XPATH, '//div[@id="tab1"]/form/table/thead/tr/td[2]/input[2]')
+    loc_ele_result = (By.XPATH,'//form[@id="form1"]/table/tbody/tr[1]/td[2]/a')
 
 
 
@@ -42,8 +44,8 @@ class ContractPage(BasePage):
     def ele_rnumber(self):
         date = time.strftime("%Y%m%d%H%M%S")
         self.driver.find_element(*self.loc_ele_rnumber).send_keys(date)
-
-    # 来源商机
+        return date
+    #添加商机
     def ele_bus1(self):
         self.driver.find_element(*self.loc_ele_bus1).click()
         time.sleep(2)
@@ -91,12 +93,18 @@ class ContractPage(BasePage):
     # 退出编辑
     def ele_outcomp(self):
         self.driver.find_element(*self.loc_ele_outcomp).click()
+    def ele_result(self):
+        result = self.driver.find_element(*self.loc_ele_result).text
+        return result
 
     def contract(self, stime,dtime,price,etime):
         self.ele_contract()
         self.ele_btn()
         self.ele_number()
-        self.ele_rnumber()
+        date = self.ele_rnumber()
+        self.ele_bus1()
+        self.ele_bus2()
+        self.ele_bus3()
         self.ele_start(stime)
         self.ele_due(dtime)
         self.ele_price(price)
@@ -106,6 +114,5 @@ class ContractPage(BasePage):
         self.ele_outcheck()
         self.ele_comp()
         self.ele_outcomp()
-
-        return self.contract()
-        self.driver.quit()
+        results = self.ele_result()
+        return date,results
