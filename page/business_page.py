@@ -30,6 +30,9 @@ class BusinessPage(BasePage):
         #推进商机
         self.loc_ele_business_push = (By.CLASS_NAME, 'advance')
         self.loc_ele_business_push_submit = (By.XPATH,'//div[@id="dialog-advance"]/form/table/tbody/tr[5]/td[2]/input[1]')
+        #删除商机
+        self.loc_ele_business_delete_click = (By.XPATH, '//form[@id="form1"]/table/tbody/tr[1]/td[1]/input')
+        self.loc_ele_business_delete = (By.ID, 'delete')
 
     def ele_collapse(self):
         self.driver.find_element(*self.loc_ele_collapse).click()  # 商机菜单
@@ -73,6 +76,11 @@ class BusinessPage(BasePage):
     def ele_business_push_submit(self):
         self.driver.find_element(*self.loc_ele_business_push_submit).click()#提交推进
 
+    def ele_business_delete(self):
+        self.driver.find_element(*self.loc_ele_business_delete_click).click()
+        self.driver.find_element(*self.loc_ele_business_delete).click()
+        self.driver.switch_to.alert.accept()
+
     '''逻辑处理'''
     def business_add(self,businessname,estimate_price):
         '''新增商机业务处理'''
@@ -105,3 +113,24 @@ class BusinessPage(BasePage):
         self.ele_business_push_submit()
         results = self.ele_result()  # 断言
         return results
+
+    def business_delete(self):
+        '''商机删除业务处理'''
+        self.ele_collapse()# 商机菜单
+        self.ele_business_delete()
+        results = self.ele_result()  # 断言
+        return results
+
+    def business_all(self,businessname,estimate_price):
+        # '''新增商机-修改商机-推进商机-删除商机'''
+        lst = []
+        res1 = self.business_add(businessname,estimate_price)
+        res2 =self.business_update()
+        res3 =self.business_push()
+        res4 =self.business_delete()
+        lst.append(res1)
+        lst.append(res2)
+        lst.append(res3)
+        lst.append(res4)
+        return lst
+
