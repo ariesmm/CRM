@@ -7,7 +7,7 @@ from page.base_page import BasePage
 class LoginPage(BasePage):
     def __init__(self,driver):
         #初始化
-        self.driver = driver
+        self.driver = driver#调用的是testcase实例化的浏览器驱动
         self.url = 'http://192.168.1.36/index.php?m=user&a=login'
         self.loc_ele_username = (By.NAME,'name')
         self.loc_ele_password = (By.NAME,'password')

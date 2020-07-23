@@ -6,12 +6,13 @@ from page.base_page import BasePage
 
 class ClewPage(BasePage):
     def __init__(self,driver):
-        self.driver = driver
+
+        self.driver = driver#调用的是testcase实例化的浏览器驱动
         self.url = 'http://192.168.1.36/index.php?m=user&a=login'
-        self.loc_ele_clew = (By.XPATH,'//div[@class="nav-collapse collapse"]/ul[1]/li[1]/a')
-        self.loc_ele_clew_add = (By.CLASS_NAME, 'btn-primary')
-        self.loc_ele_clew_username = (By.ID, 'contacts_name')
-        self.loc_ele_clew_submit = (By.NAME, 'submit')
+        self.loc_ele_clew = (By.XPATH,'//div[@class="nav-collapse collapse"]/ul[1]/li[1]/a')#线索按钮
+        self.loc_ele_clew_add = (By.CLASS_NAME, 'btn-primary')#新增线索
+        self.loc_ele_clew_username = (By.ID, 'contacts_name')#线索联系人必填项
+        self.loc_ele_clew_submit = (By.NAME, 'submit')#保存按钮
 
     def ele_clew(self):
         self.driver.find_element(*self.loc_ele_clew).click()

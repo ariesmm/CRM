@@ -7,15 +7,17 @@ from page.login_page import LoginPage
 
 class ClewAddTestCase(unittest.TestCase):
     def setUp(self):
-        driver = chrome_driver()
-        self.driver = driver
+        driver = chrome_driver()#初始化浏览器驱动
+        self.driver = driver#保证以下方法都可以使用同一个driver
 
     def test_clew_add(self):
-        login = LoginPage(self.driver )
-        lst_user = read_excel(r"D:\workspace\webAutoCRM\data\user.xlsx","user")
-        login.login(lst_user[0][0], lst_user[0][1])
-        cp = ClewPage(self.driver)
-        cp.clew_add("zhoulisha",)
+        lp = LoginPage(self.driver )#实例化登录page的LoginPage类
+        lst_user = read_excel(r"D:\workspace\webAutoCRM\data\user.xlsx","user")#读取数据
+        result = lp.login(lst_user[0][0], lst_user[0][1])#调用登录login方法
+        self.assertIn(lst_user[0][0], result)
+
+        cp = ClewPage(self.driver)#实例化ClewPage类
+        cp.clew_add("zhoulisha",)#调用新增线索clew_addd时需要传一个参数
 
 
 
