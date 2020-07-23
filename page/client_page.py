@@ -46,7 +46,7 @@ class ClientPage():
 
 
 
-        #新建客户
+    #新建客户
     def ele_client(self):
         self.driver.find_element(*self.locator_client).click()
 
@@ -134,7 +134,7 @@ class ClientPage():
     def client_server(self):
         self.ele_client()
 
-    def add(self,name,postcode,Keycontact):
+    def add(self,name,postcode,Keycontact): #添加
         # self.driver.get(url=self.url)
         self.ele_client()
         self.ele_addclient()
@@ -151,16 +151,16 @@ class ClientPage():
         time.sleep(2)
         # self.driver.quit()
         return actual_result
-    def check(self):
+    def check(self): #查看
         self.ele_check()
         self.ele_back()
         time.sleep(1)
-    def modification(self):
+    def modification(self): #编辑
         self.ele_compile_a()
         self.ele_compile_b()
         self.ele_compile_c()
         time.sleep(1)
-    def delete(self):
+    def delete(self): #删除
         self.delete_a()
         self.delete_b()
         self.delete_c()
