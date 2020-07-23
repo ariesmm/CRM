@@ -1,14 +1,12 @@
 import unittest
 from data.read_data import read_excel
 from driver.browser import chrome_driver
+from page.basetest_page import BaseTestCase
 from page.client_page import ClientPage
 
 from page.login_page import LoginPage
 
-class ClientTestCase(unittest.TestCase):
-    def setUp(self):
-        driver = chrome_driver()#初始化浏览器驱动
-        self.driver = driver#保证以下方法都可以使用同一个driver
+class ClientTestCase(BaseTestCase):
     def test_clew_add(self):
         lp = LoginPage(self.driver )#实例化登录page的LoginPage类
         lst_user = read_excel(r"E:\pycharm\CRM\data\user.xlsx","user")#读取数据
