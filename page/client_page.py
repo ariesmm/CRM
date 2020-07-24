@@ -31,22 +31,22 @@ class ClientPage():
         self.locator_check = (By.LINK_TEXT,'查看')
         self.locator_back = (By.LINK_TEXT,'返回')
         #编辑
-        self.locator_compile_a = (By.LINK_TEXT,'编辑')
-        self.locator_compile_b = (By.ID,'description')
-        self.locator_compile_c = (By.XPATH, '//form[@id="form1"]/table/tfoot/tr/td/input[2]')
+        self.locator_compile = (By.LINK_TEXT,'编辑')
+        self.locator_remarks = (By.ID,'description')
+        self.locator_cancel = (By.XPATH, '//form[@id="form1"]/table/tfoot/tr/td/input[2]')
         #删除
-        self.locator_delete_a = (By.NAME,'customer_id[]')
-        self.locator_delete_b = (By.CSS_SELECTOR,'.btn.dropdown-toggle')
-        self.locator_delete_c = (By.ID,'delete')
-        self.locator_delete_e = (By.XPATH,'/html/body/div[5]/p/a[10]/img')
-        self.locator_delete_f = (By.ID,'check_all')
-        self.locator_delete_g = (By.CSS_SELECTOR, ".btn.dropdown-toggle")
-        self.locator_delete_h = (By.ID,'delete')
-        self.locator_assert_result_a = (By.CSS_SELECTOR,'.alert.alert-success')
+        self.locator_checkbox = (By.NAME,'customer_id[]')
+        self.locator_bulk_operation = (By.CSS_SELECTOR,'.btn.dropdown-toggle')
+        self.locator_delete_in_batches = (By.ID,'delete')
+        self.locator_recycle_bin = (By.XPATH,'/html/body/div[5]/p/a[10]/img')
+        self.locator_check_all = (By.ID,'check_all')
+        self.locator_batch = (By.CSS_SELECTOR, ".btn.dropdown-toggle")
+        self.locator_Batch_Remove = (By.ID,'delete')
+        self.locator_assert_delete = (By.CSS_SELECTOR,'.alert.alert-success')
 
 
 
-    #新建客户
+    '''新建客户'''
     def ele_client(self):
         self.driver.find_element(*self.locator_client).click()
 
@@ -96,39 +96,39 @@ class ClientPage():
         self.driver.find_element(*self.locator_back).click()
         time.sleep(1)
     #编辑
-    def ele_compile_a(self):
-        self.driver.find_element(*self.locator_compile_a).click()
-    def ele_compile_b(self):
-        self.driver.find_element(*self.locator_compile_b).send_keys("喜欢青青草原的包包大人哦")
+    def ele_compile(self):
+        self.driver.find_element(*self.locator_compile).click()
+    def ele_remarks(self):
+        self.driver.find_element(*self.locator_remarks).send_keys("喜欢青青草原的包包大人哦")
         time.sleep(1)
-    def ele_compile_c(self):
-        self.driver.find_element(*self.locator_compile_c).click()
+    def ele_cancel(self):
+        self.driver.find_element(*self.locator_cancel).click()
     #删除
-    def delete_a(self):
-        self.driver.find_elements(*self.locator_delete_a)[0].click()
-    def delete_b(self):
-        self.driver.find_element(*self.locator_delete_b).click()
-    def delete_c(self):
-        self.driver.find_element(*self.locator_delete_c).click()
+    def checkbox(self):
+        self.driver.find_elements(*self.locator_checkbox)[0].click()
+    def bulk_operation(self):
+        self.driver.find_element(*self.locator_bulk_operation).click()
+    def delete_in_batches (self):
+        self.driver.find_element(*self.locator_delete_in_batches).click()
         time.sleep(1)
-    def delete_d(self):
+    def Confirm_the_deletion(self):
         self.driver.switch_to.alert.accept()
         time.sleep(1)
-    def delete_e(self):
-        self.driver.find_element(*self.locator_delete_e).click()
-    def delete_f(self):
-        self.driver.find_elements(*self.locator_delete_f)[0].click()
-    def delete_g(self):
-        self.driver.find_element(*self.locator_delete_g).click()
+    def recycle_bin(self):
+        self.driver.find_element(*self.locator_recycle_bin).click()
+    def check_all(self):
+        self.driver.find_elements(*self.locator_check_all)[0].click()
+    def batch(self):
+        self.driver.find_element(*self.locator_batch).click()
         time.sleep(1)
-    def delete_h(self):
-        self.driver.find_element(*self.locator_delete_h).click()
-    def delete_j(self):
+    def Batch_Remove(self):
+        self.driver.find_element(*self.locator_Batch_Remove).click()
+    def confirm(self):
         self.driver.switch_to.alert.accept()
     #断言是否删除成功
-    def assert_result_a(self):
-        actual_result_a = self.driver.find_element(*self.locator_assert_result_a).text
-        return actual_result_a
+    def assert_result_delete(self):
+        actual_result = self.driver.find_element(*self.locator_assert_delete).text
+        return actual_result
 
 ###
     def client_server(self):
@@ -156,23 +156,23 @@ class ClientPage():
         self.ele_back()
         time.sleep(1)
     def modification(self): #编辑
-        self.ele_compile_a()
-        self.ele_compile_b()
-        self.ele_compile_c()
+        self.ele_compile()
+        self.ele_remarks()
+        self.ele_cancel()
         time.sleep(1)
     def delete(self): #删除
-        self.delete_a()
-        self.delete_b()
-        self.delete_c()
-        self.delete_d()
-        self.delete_e()
-        self.delete_f()
-        self.delete_g()
-        self.delete_h()
-        self.delete_j()
+        self.checkbox()
+        self.bulk_operation()
+        self.delete_in_batches()
+        self.Confirm_the_deletion()
+        self.recycle_bin()
+        self.check_all()
+        self.batch()
+        self.Batch_Remove()
+        self.confirm()
         time.sleep(1)
-        actual_result_a = self.assert_result_a()
+        actual_result_delete = self.assert_result_delete()
         time.sleep(2)
         # self.driver.quit()
         self.driver.quit()
-        return actual_result_a
+        return actual_result_delete
