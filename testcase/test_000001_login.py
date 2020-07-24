@@ -5,7 +5,7 @@ from page.basetest_page import BaseTestCase
 from page.login_page import LoginPage
 
 class LoginTestCase(BaseTestCase):
-
+    '''登录'''
     def test_login(self):
         lp = LoginPage(self.driver )#实例化登录page的LoginPage类
         lst_user = read_excel(r"../data/user.xlsx","user")#读取数据

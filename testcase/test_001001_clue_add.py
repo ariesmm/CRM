@@ -1,6 +1,6 @@
 import unittest
 
-from data.read_data import read_exce
+from data.read_data import read_excel
 from page.basetest_page import BaseTestCase
 from page.clue_page import CluePage
 from page.login_page import LoginPage
@@ -8,6 +8,7 @@ from page.login_page import LoginPage
 class ClueAddTestCase(BaseTestCase):
 
     def test_clue_add(self):
+        '''#添加线索'''
         #调用登录
         lp = LoginPage(self.driver )#实例化登录page的LoginPage类
         lst_user = read_excel(r"../data/user.xlsx","user")#读取数据
