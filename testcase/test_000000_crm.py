@@ -13,7 +13,7 @@ class BusinessALLTestCase(BaseTestCase):
     def test_business_all(self):
         '''新增线索-添加客户-查看客户-新增商机-修改商机-合同'''
         lp = LoginPage(self.driver)  # 实例化登录page的LoginPage类
-        lst_user = read_excel(r"D:\workspace\webAutoCRM\data\user.xlsx","user")#读取数据
+        lst_user = read_excel(r"../data/user.xlsx","user")#读取数据
         result = lp.login(lst_user[0][0], lst_user[0][1])#调用登录login方法
         self.assertIn(lst_user[0][0], result)
 
@@ -22,14 +22,14 @@ class BusinessALLTestCase(BaseTestCase):
         self.assertIn('添加成功',result1)
         #添加客户
         lp = ClientPage(self.driver)
-        result2 = lp.add("张三004","621601","niannian")
+        result2 = lp.add("张三006","621601","niannian")
         self.assertIn("添加客户成功", result2)
         #查看客户
         lp.client_server()
         lp.check()
         #新增商机
         bg = BusinessPage(self.driver)
-        result3 = bg.business_add('张三新增商机004','100000')
+        result3 = bg.business_add('张三新增商机006','100000')
         self.assertIn('添加商机成功',result3)
         #修改商机
         bp = BusinessPage(self.driver)

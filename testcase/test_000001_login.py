@@ -9,7 +9,7 @@ class LoginTestCase(BaseTestCase):
 
     def test_login(self):
         lp = LoginPage(self.driver )#实例化登录page的LoginPage类
-        lst_user = read_excel(r"D:\workspace\webAutoCRM\data\user.xlsx","user")#读取数据
+        lst_user = read_excel(r"../data/user.xlsx","user")#读取数据
         result = lp.login(lst_user[0][0], lst_user[0][1])#调用登录login方法
         self.assertIn(lst_user[0][0], result)
 
