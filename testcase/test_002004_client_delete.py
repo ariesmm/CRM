@@ -6,9 +6,9 @@ from page.client_page import ClientPage
 
 from page.login_page import LoginPage
 
-class ClientTestCase(BaseTestCase):
+class ClientDeleteTestCase(BaseTestCase):
 
-    def test_clew_add(self):
+    def test_client_delete(self):
         '''删除客户'''
         lp = LoginPage(self.driver )#实例化登录page的LoginPage类
         lst_user = read_excel(r"../data/user.xlsx","user")#读取数据

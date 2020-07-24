@@ -7,7 +7,7 @@ from page.client_page import ClientPage
 from page.login_page import LoginPage
 
 class ClientTestCase(BaseTestCase):
-    def test_clew_add(self):
+    def test_client(self):
         '''新增客户-查看客户--删除'''
         lp = LoginPage(self.driver )#实例化登录page的LoginPage类
         lst_user = read_excel(r"../data/user.xlsx","user")#读取数据
@@ -15,7 +15,7 @@ class ClientTestCase(BaseTestCase):
         self.assertIn(lst_user[0][0], result)
 
         lp = ClientPage(self.driver)
-        actual = lp.add("lisa0018","621601","niannian")
+        actual = lp.add("lisa8888","621601","niannian")
         print(actual)
         self.assertIn("添加客户成功", actual)
 

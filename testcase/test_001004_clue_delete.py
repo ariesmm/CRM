@@ -6,9 +6,9 @@ from page.basetest_page import BaseTestCase
 from page.clue_page import CluePage
 from page.login_page import LoginPage
 
-class ClueAddTestCase(BaseTestCase):
+class ClueDeleteTestCase(BaseTestCase):
 
-    def test_clue(self):
+    def test_clue_delete(self):
         #调用登录
         lp = LoginPage(self.driver )#实例化登录page的LoginPage类
         lst_user = read_excel(r"../data/user.xlsx","user")#读取数据
