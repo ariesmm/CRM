@@ -15,7 +15,7 @@ class BusinessALLTestCase(BaseTestCase):
         self.assertIn(lst_user[0][0], result)
 
         bg = BusinessPage(self.driver)
-        results = bg.business_all('lisa009','10000')#有四个返回值，返回的是一个列表
+        results = bg.business_all('lisa020','10000')#有四个返回值，返回的是一个列表
 
         self.assertIn('添加商机成功',results[0])
         self.assertIn('修改商机信息成功', results[1])

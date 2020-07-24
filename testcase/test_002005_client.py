@@ -15,7 +15,7 @@ class ClientTestCase(BaseTestCase):
         self.assertIn(lst_user[0][0], result)
 
         lp = ClientPage(self.driver)
-        actual = lp.add("lisa0010","621601","niannian")
+        actual = lp.add("lisa0018","621601","niannian")
         print(actual)
         self.assertIn("添加客户成功", actual)
 
