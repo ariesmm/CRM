@@ -6,11 +6,7 @@ from page.login_page import LoginPage
 
 class LoginTestCase(BaseTestCase):
     '''登录'''
-    def test_login(self):
-        lp = LoginPage(self.driver )#实例化登录page的LoginPage类
-        lst_user = read_excel(r"../data/user.xlsx","user")#读取数据
-        result = lp.login(lst_user[0][0], lst_user[0][1])#调用登录login方法
-        self.assertIn(lst_user[0][0], result)
-
+    def test_logs(self):
+        print("登录验证")
 if __name__ == '__main__':
     unittest.main()
