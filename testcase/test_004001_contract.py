@@ -13,10 +13,6 @@ class ContractTestCase(BaseTestCase):
 
     def test_contract(self):
         '''合同-新增-查看-编辑'''
-        lp = LoginPage(self.driver)
-        lst_user = read_excel(r"../data/user.xlsx", "user")  # 读取数据
-        result = lp.login(lst_user[0][0], lst_user[0][1])  # 调用登录login方法
-        self.assertIn(lst_user[0][0], result)
 
         cp = ContractPage(self.driver)
         date,result = cp.contract("2020-07-22","2020-08-23","100","2021-07-02")

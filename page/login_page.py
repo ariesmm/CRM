@@ -5,6 +5,7 @@ from selenium.webdriver.common.by import By
 from page.base_page import BasePage
 
 class LoginPage(BasePage):
+
     def __init__(self,driver):
         #初始化
         self.driver = driver   #调用的是testcase实例化的浏览器驱动
