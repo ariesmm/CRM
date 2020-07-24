@@ -1,9 +1,8 @@
 import unittest
 
 from data.read_data import read_excel
-from driver.browser import chrome_driver
-from page.basetest_page import BaseTestCase
-from page.clew_page import ClewPage
+from testcase.base_testcase import BaseTestCase
+from tmp.clew_page import ClewPage
 from page.login_page import LoginPage
 
 class ClewAddTestCase(BaseTestCase):
