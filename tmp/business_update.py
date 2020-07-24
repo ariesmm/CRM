@@ -42,6 +42,10 @@ driver.find_element(By.XPATH,'//div[@class="nav-collapse collapse"]/ul[1]/li[3]/
 # driver.find_element(By.XPATH,'//div[@id="dialog-advance"]/form/table/tbody/tr[5]/td[2]/input[1]').click()
 
 '''删除'''
-driver.find_element(By.XPATH,'//form[@id="form1"]/table/tbody/tr[1]/td[1]/input').click()
-driver.find_element(By.ID,'delete').click()
-driver.switch_to.alert.accept()
+# driver.find_element(By.XPATH,'//form[@id="form1"]/table/tbody/tr[1]/td[1]/input').click()
+# driver.find_element(By.ID,'delete').click()
+# driver.switch_to.alert.accept()
+
+'''查看'''
+driver.find_element(By.XPATH,'//form[@id="form1"]/table/tbody/tr[1]/td[12]/a[1]').click()#查看
+driver.find_element(By.XPATH,'//ul[@id="left_list"]/li[1]/span')

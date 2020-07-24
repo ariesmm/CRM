@@ -7,7 +7,7 @@ from page.base_page import BasePage
 class BusinessPage(BasePage):
     def __init__(self,driver):
         self.driver = driver
-        self.url = 'http://192.168.1.36/index.php?m=user&a=login'
+        # self.url = 'http://192.168.1.36/index.php?m=user&a=login'
         '''新增商机'''
         self.loc_ele_collapse = (By.XPATH, '//div[@class="nav-collapse collapse"]/ul[1]/li[3]/a')# 商机菜单
         self.loc_ele_primary = (By.CLASS_NAME, 'btn-primary')# 添加商机按钮

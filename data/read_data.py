@@ -32,8 +32,6 @@ def read_excel(file_name,sheet_name):
     return (lst)
 
 
-
-
 # user_pwd = read_excel('user.xlsx', 'user')
 # print(user_pwd)
 # user = user_pwd[0][0]
