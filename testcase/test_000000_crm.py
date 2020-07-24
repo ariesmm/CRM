@@ -12,10 +12,6 @@ class BusinessALLTestCase(BaseTestCase):
 
     def test_business_all(self):
         '''新增线索-添加客户-查看客户-新增商机-修改商机-合同'''
-        lp = LoginPage(self.driver)  # 实例化登录page的LoginPage类
-        lst_user = read_excel(r"../data/user.xlsx","user")#读取数据
-        result = lp.login(lst_user[0][0], lst_user[0][1])#调用登录login方法
-        self.assertIn(lst_user[0][0], result)
 
         cp=CluePage(self.driver)
         result1=cp.clue_add('阿里公司','李女士')

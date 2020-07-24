@@ -8,7 +8,7 @@ class BusinessPage(BasePage):
     def __init__(self,driver):
         self.driver = driver
         self.url = 'http://192.168.1.36/index.php?m=user&a=login'
-        #新增商机元素
+        '''新增商机'''
         self.loc_ele_collapse = (By.XPATH, '//div[@class="nav-collapse collapse"]/ul[1]/li[3]/a')# 商机菜单
         self.loc_ele_primary = (By.CLASS_NAME, 'btn-primary')# 添加商机按钮
         self.loc_ele_owner_name = (By.ID, 'owner_name')# 选择负责人
@@ -24,16 +24,18 @@ class BusinessPage(BasePage):
         self.loc_ele_product_OK = (By.CSS_SELECTOR, 'div[id="dialog-product-list"]+div>div :nth-child(1)') # 点击OK
         self.loc_ele_business_submit = (By.XPATH, '//form[@id="form1"]/table/tfoot/tr/td/input[1]')# 点击保存
         self.loc_ele_result = (By.CLASS_NAME,'alert-success')#断言，提示添加商机成功
-        #修改商机元素
+        '''修改商机'''
         self.loc_ele_business_update = (By.XPATH,'//form[@id="form1"]/table/tbody/tr[1]/td[12]/a[3]')
         self.loc_ele_business_update_submit =(By.NAME,'submit')
-        #推进商机
+        '''推进商机'''
         self.loc_ele_business_push = (By.CLASS_NAME, 'advance')
         self.loc_ele_business_push_submit = (By.XPATH,'//div[@id="dialog-advance"]/form/table/tbody/tr[5]/td[2]/input[1]')
-        #删除商机
+        '''删除商机'''
         self.loc_ele_business_delete_click = (By.XPATH, '//form[@id="form1"]/table/tbody/tr[1]/td[1]/input')
         self.loc_ele_business_delete = (By.ID, 'delete')
-
+        '''查看商机'''
+        self.loc_ele_business_view = (By.XPATH, '//form[@id="form1"]/table/tbody/tr[1]/td[12]/a[1]')
+        self.loc_ele_business_view_assert = (By.XPATH, '//ul[@id="left_list"]/li[1]/span')
     def ele_collapse(self):
         self.driver.find_element(*self.loc_ele_collapse).click()  # 商机菜单
     def ele_primary(self):
@@ -75,11 +77,16 @@ class BusinessPage(BasePage):
         self.driver.find_element(*self.loc_ele_business_push).click()#点击推进
     def ele_business_push_submit(self):
         self.driver.find_element(*self.loc_ele_business_push_submit).click()#提交推进
-
+    '''删除'''
     def ele_business_delete(self):
         self.driver.find_element(*self.loc_ele_business_delete_click).click()
         self.driver.find_element(*self.loc_ele_business_delete).click()
         self.driver.switch_to.alert.accept()
+    '''查看'''
+    def ele_business_view(self):
+        self.driver.find_element(*self.loc_ele_business_view).click()
+        result_view = self.driver.find_element(*self.loc_ele_business_view_assert).text
+        return result_view
 
     '''逻辑处理'''
     def business_add(self,businessname,estimate_price):
@@ -94,7 +101,11 @@ class BusinessPage(BasePage):
         self.ele_business_submit()# 点击保存
         results = self.ele_result()#断言
         return results
-
+    def business_view(self):
+        '''查看商机业务处理'''
+        self.ele_collapse()  # 商机菜单
+        results = self.ele_business_view()#点击查看
+        return results
     def business_update(self):
         '''修改商机业务处理'''
         self.ele_collapse()# 商机菜单
@@ -122,15 +133,18 @@ class BusinessPage(BasePage):
         return results
 
     def business_all(self,businessname,estimate_price):
-        '''新增商机-修改商机-推进商机-删除商机'''
+        '''新增商机-查看商机-修改商机-查看商机-推进商机'''
         lst = []
         result_add = self.business_add(businessname,estimate_price)
+        result_view_one = self.business_view()
         result_update = self.business_update()
+        result_view_two = self.business_view()
         result_push = self.business_push()
-        result_delete = self.business_delete()
+
         lst.append(result_add)
+        lst.append(result_view_one)
         lst.append(result_update)
+        lst.append(result_view_two)
         lst.append(result_push)
-        lst.append(result_delete)
         return lst
 
