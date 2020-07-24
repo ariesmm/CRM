@@ -1,6 +1,5 @@
 import unittest
 from data.read_data import read_excel
-from driver.browser import chrome_driver
 from page.basetest_page import BaseTestCase
 from page.client_page import ClientPage
 
