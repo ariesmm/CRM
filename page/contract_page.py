@@ -45,6 +45,7 @@ class ContractPage(BasePage):
         date = time.strftime("%Y%m%d%H%M%S")
         self.driver.find_element(*self.loc_ele_rnumber).send_keys(date)
         return date
+
     #添加商机
     def ele_bus1(self):
         self.driver.find_element(*self.loc_ele_bus1).click()
