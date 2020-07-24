@@ -1,6 +1,6 @@
 import unittest
 from data.read_data import read_excel
-from page.basetest_page import BaseTestCase
+from testcase.base_testcase import BaseTestCase
 from page.contract_page import ContractPage
 from page.login_page import LoginPage
 

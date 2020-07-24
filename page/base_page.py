@@ -9,6 +9,7 @@ class BasePage():
         self.driver = driver
 
     def open(self,url):
+        self.url = 'http://192.168.1.36/index.php?m=user&a=login'
         self.driver.get(url)
         time.sleep(3)
 

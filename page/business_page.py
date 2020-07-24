@@ -7,7 +7,6 @@ from page.base_page import BasePage
 class BusinessPage(BasePage):
     def __init__(self,driver):
         self.driver = driver
-        self.url = 'http://192.168.1.36/index.php?m=user&a=login'
         #新增商机元素
         self.loc_ele_collapse = (By.XPATH, '//div[@class="nav-collapse collapse"]/ul[1]/li[3]/a')# 商机菜单
         self.loc_ele_primary = (By.CLASS_NAME, 'btn-primary')# 添加商机按钮
@@ -124,13 +123,13 @@ class BusinessPage(BasePage):
     def business_all(self,businessname,estimate_price):
         '''新增商机-修改商机-推进商机-删除商机'''
         lst = []
-        res1 = self.business_add(businessname,estimate_price)
-        res2 =self.business_update()
-        res3 =self.business_push()
-        res4 =self.business_delete()
-        lst.append(res1)
-        lst.append(res2)
-        lst.append(res3)
-        lst.append(res4)
+        result_add = self.business_add(businessname,estimate_price)
+        result_update = self.business_update()
+        result_push = self.business_push()
+        result_delete = self.business_delete()
+        lst.append(result_add)
+        lst.append(result_update)
+        lst.append(result_push)
+        lst.append(result_delete)
         return lst
 
