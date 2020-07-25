@@ -1,11 +1,9 @@
 import unittest
 
-from data.read_data import read_excel
 from testcase.base_testcase import BaseTestCase
 from page.client_page import ClientPage
 from page.clue_page import CluePage
 from page.contract_page import ContractPage
-from page.login_page import LoginPage
 from page.business_page import BusinessPage
 
 class BusinessALLTestCase(BaseTestCase):

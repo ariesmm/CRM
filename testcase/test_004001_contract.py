@@ -1,8 +1,7 @@
 import unittest
-from data.read_data import read_excel
 from testcase.base_testcase import BaseTestCase
 from page.contract_page import ContractPage
-from page.login_page import LoginPage
+
 
 '''
 登录
